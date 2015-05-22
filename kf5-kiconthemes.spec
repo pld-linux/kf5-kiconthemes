@@ -1,18 +1,18 @@
 # TODO:
 # - dir /usr/include/KF5 not packaged
 # /usr/share/kf5 not packaged
-%define		kdeframever	5.4
+%define		kdeframever	5.10
 %define		qtver		5.3.2
 %define		kfname		kiconthemes
 
 Summary:	Icon GUI utilities
 Name:		kf5-%{kfname}
-Version:	5.4.0
+Version:	5.10.0
 Release:	0.1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	431d0485dbd53453269f1fe0fdda7feb
+# Source0-md5:	f552e96c2fe42a0f1d6e3c46ab8bfb49
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 %attr(755,root,root) %{_bindir}/kiconfinder5
 %attr(755,root,root) %ghost %{_libdir}/libKF5IconThemes.so.5
-%attr(755,root,root) %{_libdir}/libKF5IconThemes.so.5.4.0
+%attr(755,root,root) %{_libdir}/libKF5IconThemes.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
