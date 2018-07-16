@@ -1,15 +1,15 @@
-%define		kdeframever	5.45
+%define		kdeframever	5.48
 %define		qtver		5.3.2
 %define		kfname		kiconthemes
 
 Summary:	Icon GUI utilities
 Name:		kf5-%{kfname}
-Version:	5.45.0
+Version:	5.48.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	608a7d069f23d8f925c0c10f98e0567d
+# Source0-md5:	2a0e2ceef894b89006fa8ac68caea49c
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
