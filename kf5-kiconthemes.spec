@@ -1,15 +1,15 @@
-%define		kdeframever	5.79
+%define		kdeframever	5.80
 %define		qtver		5.9.0
 %define		kfname		kiconthemes
 
 Summary:	Icon GUI utilities
 Name:		kf5-%{kfname}
-Version:	5.79.0
+Version:	5.80.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	2cc3443c13bf99e7660a8df09cd6fc95
+# Source0-md5:	02a8148ee003e976b4ee2d49604ecb05
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 %{_datadir}/qlogging-categories5/kiconthemes.categories
 %attr(755,root,root) %{_bindir}/kiconfinder5
-%attr(755,root,root) %ghost %{_libdir}/libKF5IconThemes.so.5
+%ghost %{_libdir}/libKF5IconThemes.so.5
 %attr(755,root,root) %{_libdir}/libKF5IconThemes.so.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/iconengines/KIconEnginePlugin.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/kiconthemes5widgets.so
@@ -106,5 +106,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/KIconThemes
 %{_includedir}/KF5/kiconthemes_version.h
 %{_libdir}/cmake/KF5IconThemes
-%attr(755,root,root) %{_libdir}/libKF5IconThemes.so
+%{_libdir}/libKF5IconThemes.so
 %{qt5dir}/mkspecs/modules/qt_KIconThemes.pri
