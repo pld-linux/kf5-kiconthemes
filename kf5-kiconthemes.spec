@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.111
+%define		kdeframever	5.112
 %define		qtver		5.15.2
 %define		kfname		kiconthemes
 
 Summary:	Icon GUI utilities
 Name:		kf5-%{kfname}
-Version:	5.111.0
+Version:	5.112.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	05e9460aebf7377a3a784b12d1dd73be
+# Source0-md5:	9d0092485e8744beeb30eea26d973b7d
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
