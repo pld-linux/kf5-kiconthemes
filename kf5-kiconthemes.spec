@@ -1,25 +1,25 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.114
+%define		kdeframever	5.249.0
 %define		qtver		5.15.2
 %define		kfname		kiconthemes
 
 Summary:	Icon GUI utilities
 Name:		kf5-%{kfname}
-Version:	5.114.0
-Release:	1
+Version:	5.249.0
+Release:	0.1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	f997425dce56c003c6350e2595d81069
+Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	daf7238a346aa10697aa674a130e74a6
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5DBus-devel >= %{qtver}
-BuildRequires:	Qt5Gui-devel >= %{qtver}
-BuildRequires:	Qt5Svg-devel >= %{qtver}
-BuildRequires:	Qt5Test-devel >= %{qtver}
-BuildRequires:	Qt5Widgets-devel >= %{qtver}
+BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6DBus-devel >= %{qtver}
+BuildRequires:	Qt6Gui-devel >= %{qtver}
+BuildRequires:	Qt6Svg-devel >= %{qtver}
+BuildRequires:	Qt6Test-devel >= %{qtver}
+BuildRequires:	Qt6Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-karchive-devel >= %{version}
@@ -30,14 +30,14 @@ BuildRequires:	kf5-kitemviews-devel >= %{version}
 BuildRequires:	kf5-kwidgetsaddons-devel >= %{version}
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
-BuildRequires:	qt5-linguist >= %{qtver}
+BuildRequires:	qt6-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	Qt5DBus >= %{qtver}
-Requires:	Qt5Gui >= %{qtver}
-Requires:	Qt5Svg >= %{qtver}
-Requires:	Qt5Widgets >= %{qtver}
+Requires:	Qt6DBus >= %{qtver}
+Requires:	Qt6Gui >= %{qtver}
+Requires:	Qt6Svg >= %{qtver}
+Requires:	Qt6Widgets >= %{qtver}
 Requires:	kf5-dirs
 Requires:	kf5-karchive >= %{version}
 Requires:	kf5-kconfigwidgets >= %{version}
@@ -47,7 +47,7 @@ Requires:	kf5-kitemviews >= %{version}
 Requires:	kf5-kwidgetsaddons >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt5dir		%{_libdir}/qt5
+%define		qt6dir		%{_libdir}/qt6
 
 %description
 This library contains classes to improve the handling of icons in
@@ -68,7 +68,7 @@ Summary:	Header files for %{kfname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kfname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	Qt5Widgets-devel >= %{qtver}
+Requires:	Qt6Widgets-devel >= %{qtver}
 Requires:	cmake >= 3.16
 
 %description devel
@@ -97,7 +97,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-%find_lang %{kfname}5
+%find_lang %{kfname}6
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -105,20 +105,28 @@ rm -rf $RPM_BUILD_ROOT
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{kfname}5.lang
+%files -f %{kfname}6.lang
 %defattr(644,root,root,755)
 %doc README.md
-%{_datadir}/qlogging-categories5/kiconthemes.categories
-%attr(755,root,root) %{_bindir}/kiconfinder5
-%ghost %{_libdir}/libKF5IconThemes.so.5
-%attr(755,root,root) %{_libdir}/libKF5IconThemes.so.*.*
-%attr(755,root,root) %{_libdir}/qt5/plugins/iconengines/KIconEnginePlugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/designer/kiconthemes5widgets.so
-%{_datadir}/qlogging-categories5/kiconthemes.renamecategories
+%{_datadir}/qlogging-categories6/kiconthemes.categories
+%attr(755,root,root) %{_bindir}/kiconfinder6
+%ghost %{_libdir}/libKF6IconThemes.so.6
+%attr(755,root,root) %{_libdir}/libKF6IconThemes.so.*.*
+%attr(755,root,root) %{_libdir}/qt6/plugins/iconengines/KIconEnginePlugin.so
+%attr(755,root,root) %{_libdir}/qt6/plugins/designer/kiconthemes6widgets.so
+%{_datadir}/qlogging-categories6/kiconthemes.renamecategories
+%attr(755,root,root) %{_libdir}/libKF6IconWidgets.so.*.*
+%ghost %{_libdir}/libKF6IconWidgets.so.6
+%dir %{_libdir}/qt6/qml/org/kde/iconthemes
+%{_libdir}/qt6/qml/org/kde/iconthemes/iconthemesplugin.qmltypes
+%{_libdir}/qt6/qml/org/kde/iconthemes/kde-qmlmodule.version
+%{_libdir}/qt6/qml/org/kde/iconthemes/libiconthemesplugin.so
+%{_libdir}/qt6/qml/org/kde/iconthemes/qmldir
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/KIconThemes
-%{_libdir}/cmake/KF5IconThemes
-%{_libdir}/libKF5IconThemes.so
-%{qt5dir}/mkspecs/modules/qt_KIconThemes.pri
+%{_includedir}/KF6/KIconThemes
+%{_includedir}/KF6/KIconWidgets
+%{_libdir}/cmake/KF6IconThemes
+%{_libdir}/libKF6IconThemes.so
+%{_libdir}/libKF6IconWidgets.so
